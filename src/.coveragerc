@@ -1,0 +1,3 @@
+[run]
+source = checksftp
+omit = checksftp/test*
