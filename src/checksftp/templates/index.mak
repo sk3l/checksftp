@@ -59,18 +59,25 @@
                   "hostSelection" class=
                   "form-label-endpoint">Host</label>
                   <div class="dropdown">
-                     <button id="dLabel" type="button" data-toggle=
-                     "dropdown" aria-haspopup="true" aria-expanded=
-                     "false">Choose a host</button>
-                     <ul class="dropdown-menu" aria-labelledby=
-                     "dLabel">
-                        <li>foo</li>
-                        <li>bar</li>
-                        <li>bax</li>
+						<ul class="nav nav-pills" role="tablist"> 
+							<li role="presentation" class="dropdown">
+							<a href="#" class="dropdown-toggle" id="dropdwn-host" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Select Host
+							<span class="caret"></span> 
+							</a>
+                     
+							<ul class="dropdown-menu" id="menu-host" aria-labelledby=
+                     "dropdwn-host">
+                        <li><a href="#">foo</a></li>
+                        <li><a href="#">bar</a></li>
+                        <li><a href="#">bax</a></li>
                      </ul>
-                  </div><label for="inputPort" class=
+							</li>
+						</ul>
+                  </div>
+						
+						<label for="inputPort" class=
                   "form-label-endpoint">Port</label> <input class=
-                  "form-control" id="inputPort" placeholder=
+                  "form-control" id="input-port" placeholder=
                   "Enter port">
                </div>
                <hr>
@@ -96,7 +103,7 @@
                <hr>
                <div class="checkbox">
     					<label>
-      					<input type="checkbox">Show trace info</label>
+      					<input type="checkbox" id="chkbx-trace">Show trace info</label>
   					</div>
 					<button type="button" onclick="run_the_check()" class="btn btn-default">Run Check</button>
             </form>
@@ -104,18 +111,18 @@
          <div class="col-md-10 col-md-offset-2 main">
             <div class="row">
             <div class="col-md-4" id="img-sftp-src"><img alt="Source" 
-					src="${request.static_url('checksftp:static/images/web-laptop.png')}"/></div>
+					src="${request.static_url('checksftp:static/images/web-home.png')}"/></div>
             <div class="col-md-4">
 					<div id="div-result-title"><h2 id="h2-title">Ready to Check</h2></div>
 					<div id="div-result-img"></div>
-					<div id="div-result-status" style="visibility: hidden;"><div class="loader"></div></div>
-					<div id="div-result-text" style="visibility: hidden;">Result Text</div>
+					<div id="div-result-status" style="display: none;"><div class="loader"></div></div>
+					<div id="div-result-text" style="display: none;">Result Text</div>
 				</div>
             <div class="col-md-4" id="img-sftp-dst"><img alt="Destination" 
 					src="${request.static_url('checksftp:static/images/web-server.png')}"/></div>
             </div>
            
-            <div class="panel panel-default" id="panel-trace" style="visibility: hidden;">
+			  <div class="panel panel-default" id="panel-trace" style="display: none;">
   				<div class="panel-heading">
     				<h3 class="panel-title">Trace Info</h3>
   				</div>
