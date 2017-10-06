@@ -103,14 +103,16 @@
          </div>
          <div class="col-md-10 col-md-offset-2 main">
             <div class="row">
-            <div class="col-md-4" id="img-sftp-src"><img alt="Source" src="images/web-laptop.png"/></div>
+            <div class="col-md-4" id="img-sftp-src"><img alt="Source" 
+					src="${request.static_url('checksftp:static/images/web-laptop.png')}"/></div>
             <div class="col-md-4">
 					<div id="div-result-title"><h2 id="h2-title">Ready to Check</h2></div>
 					<div id="div-result-img"></div>
 					<div id="div-result-status" style="visibility: hidden;"><div class="loader"></div></div>
 					<div id="div-result-text" style="visibility: hidden;">Result Text</div>
 				</div>
-            <div class="col-md-4" id="img-sftp-dst"><img alt="Destination" src="images/web-server.png"/></div>
+            <div class="col-md-4" id="img-sftp-dst"><img alt="Destination" 
+					src="${request.static_url('checksftp:static/images/web-server.png')}"/></div>
             </div>
            
             <div class="panel panel-default" id="panel-trace" style="visibility: hidden;">
@@ -128,7 +130,7 @@
    <script src=
    "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
    </script> 
-   <script src="bootstrap/js/bootstrap.min.js">
+   <script src="${request.static_url('checksftp:static/bootstrap/js/bootstrap.min.js')}">
    </script> 
    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     
