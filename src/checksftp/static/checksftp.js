@@ -24,13 +24,20 @@ function run_the_check(){
          checkurl = checkurl + '&trace=true';
       }
 
+
+      $("#div-result-summary").hide();
+      $("#div-result-img").hide()
+      $("#div-result-outcome").hide();
+      $("#div-result-text").hide()
+      $("#panel-trace").hide();
+
       jQuery.ajax({
                   url     : checkurl,
                   type    : 'POST',
                   dataType: 'json',
                   success : function(data){
                                  alert("Success. Got the message:\n "+checkurl +"\n" + data.message)
-gc
+
                                  $("#div-result-summary").text(data.msg);
 
                                  $("#div-result-img").show();
@@ -38,10 +45,14 @@ gc
                                  if (result === 0) {
                                     $("#div-result-img").html(
                                        '<img alt="succcess!" src="static/images/web-check.png"></img>');
+                                    $("#h2-outcome").text("Success");
+                                    $("#h2-outcome").css("color", "green");
                                  }
                                  else {
                                     $("#div-result-img").html(
                                        '<img alt="fail" src="static/images/web-x.png"></img>');
+                                    $("#h2-outcome").text("Failure");
+                                    $("#h2-outcome").css("color", "red");
                                  }
 
                                  $("#div-result-text").show()
@@ -52,7 +63,9 @@ gc
                                  else {
                                     $("#panel-trace").hide();
                                  }
-                                 $("#h1-title").text("Check Complete")gc
+                                 $("#h1-title").text("Check Complete");
+                                 $("#div-result-outcome").show();
+                                 $("#div-result-summary").show();
                                  $("#div-result-status").hide();
                              }
               });

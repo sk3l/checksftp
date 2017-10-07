@@ -115,9 +115,8 @@
 					src="${request.static_url('checksftp:static/images/web-home.png')}"/></div>
             <div class="col-md-4">
 					<div id="div-result-title"><h1 id="h1-title">Ready to Check</h1></div>
-					<div id="div-result-img" style="display:none;">
-					
-					</div>
+					<div id="div-result-outcome" style="display:none;"><h2 id="h2-outcome"></h2></div>
+					<div id="div-result-img" style="display:none;"></div>
 					<div id="div-result-status" style="display: none;"><div class="loader"></div></div>
 					<div id="div-result-text" style="display: none;">
 						<div id="div-result-summary"></div>

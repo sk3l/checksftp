@@ -128,6 +128,11 @@ body
    text-align: center;
 }
 
+#div-result-outcome
+{
+   text-align:center;
+}
+
 #div-result-status
 {
 	padding: 20px;
