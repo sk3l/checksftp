@@ -1,5 +1,7 @@
-from pyramid.view import view_config
+import re
+import socket
 
+from pyramid.view import view_config
 
 @view_config(route_name='home', renderer='templates/index.mak')
 def on_page_load(request):
@@ -7,4 +9,94 @@ def on_page_load(request):
 
 @view_config(route_name='runthecheck', renderer='json')
 def on_run_check(request):
-    return {'message': 'Testing 123...'}
+
+    try:
+
+        #import pdb;pdb.set_trace()
+
+        host = request.GET['host']
+        port = int(request.GET['port'])
+
+        trace = False
+        if 'trace' in request.GET and request.GET['trace']:
+            trace = True
+
+        sct = sftp_conn_tester(host, port, trace)
+
+        return sct.test_basic_connect()
+
+    except Exception as err:
+        return {
+            'result' : 1,
+            'msg'    : 'Encountered internal error while running checks',
+        }
+
+
+class sftp_conn_tester:
+
+    def __init__(self, host, port, trace):
+        self.host_  = host
+        self.port_  = port
+        self.trace_ = trace
+        self.sbuff_ = []
+        self.rbuff_ = []
+
+    def _create_sock(self):
+        sock  = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(30)
+        return sock
+
+    def test_basic_connect(self):
+        try:
+
+            self.rbuff_ = []
+
+            # Connect to remote host and attempt to read SSH server banner
+            with self._create_sock() as sock:
+
+                sock.connect((self.host_, self.port_))
+
+                # Read server connection banner
+                buff = []
+                while (len(self.rbuff_) < 1024):
+                    buff = sock.recv(1024)
+                    self.rbuff_ += buff
+                    if len(buff) < 1024:
+                        break;
+
+            # Validate SSH server banner
+            # Pattern for banner is
+            # SSH-<majvers>.<minvers>-<PrintableAsciiButSpaceOrDash> <PrintableAscii>\n
+            pattern = re.compile('SSH-\d.\d-[!\-!-~]+ [ -~]*\n')
+            match = pattern.match(bytes(self.rbuff_).decode())
+
+            message = {
+                'result' : 0,
+                'msg'    : 'Successful SFTP connection',
+            }
+
+            if match is None:
+                message['result'] = 2
+                message['msg'] = "Service at host '{0}', port {1} doesn't appear to be SFTP"
+
+            return message
+
+        except ConnectionRefusedError as err:
+            return {
+                'result' : 4,
+                'msg'    : "No active service found at host '{0}', port {1}.".format(
+                    self.host_,
+                    self.port_)
+            }
+
+        except OSError as err:
+            return {
+                'result' : 8,
+                'msg'    : "Encountered internal error connecting to SFTP service."
+            }
+
+    def test_loop_connect(self):
+        pass
+
+    def test_full_connect(sefl):
+        pass

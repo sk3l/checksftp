@@ -102,13 +102,17 @@ body
 
 #img-sftp-src
 {
-	padding: 40px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-left: 60px;
 	text-align:left;
 }
 
 #img-sftp-dst
 {
-	padding: 40px;
+   padding-top: 40px;
+	padding-bottom: 40px;
+	padding-right: 60px;
 	text-align:right;
 }
 
@@ -117,9 +121,21 @@ body
 	text-align: center;
 }
 
+#div-result-img
+{
+   padding-top: 40px;
+   padding-bottom: 40px;
+   text-align: center;
+}
+
 #div-result-status
 {
 	padding: 20px;
+   text-align: center;
+}
+
+#div-result-text
+{
    text-align: center;
 }
 #page-title-header
