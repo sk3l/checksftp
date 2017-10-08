@@ -9,41 +9,57 @@ body
    height: 100%;
    font-family: 'Exo', sans-serif;
    font-size: 1.6em;
-   padding-top: 70px;
 }
 
-#navbar_top
+#window 
 {
-   /*background-color: #000000;*/
-   /*border: 0px;*/
-   /*border-color: #808080;*/
-   box-shadow: 0 4px 4px rgba(160,160,160,.35);
+   width: 1280px;
+   min-height: 740px;
+   margin: auto;
+   margin-top: 2px;
 }
 
-#navbar_top button
+#navbar-top
 {
-   background-color:rgba(160, 160, 160, .8);
-   border: 1px solid rgba(196, 196, 196, .7);
+	background-color: #333;
 }
-
-#navbar_top li > a
+/*
+#navbar-top div a
 {
    color: #ffffff;
-   font-size: 1em;
+   font-size: 2em;
    padding: 8px 15px 8px 15px;
    margin-top: 7px;
+}
+*/
+#navbar-top div a
+{
+   color: #dadada;
+   font-size: 1.8em;
+   /*padding: 8px 15px 8px 15px;*/
    transition: all 600ms ease-in-out;
    -webkit-transition: all 600ms ease-in-out;  
 }
-
-#navbar_top li > a:hover
+*
+#navbar-top div  a:hover
 {
    /*font-weight: bold;*/
-   background-color: rgba(160,160,160, .7);
+   /*background-color: rgba(160,160,160, .7);*/
    /*transform: scale(1.1);*/
    /*transform: translate(0px,12px);*/
-   border-radius: 4px;
+   /*border-radius: 4px;*/
    /*padding: 8px 15px 8px 15px;*/
+}
+
+#div-nav
+{
+   padding-left: 8px;
+   padding-right: 8px;
+}
+
+#span-nav
+{
+   color: #dadada;
 }
 
 #navbar-link
@@ -78,26 +94,65 @@ body
    border-top: 1px solid #afafaf;
 }
 
-.sidebar
+#container
 {
-	position: fixed;
+   width: 1280px;
+   min-height: 740px;
+   border: 1px solid #cacaca;
+}
+
+#sidebar
+{
+    width: 280px;
+    min-height: 740px;
+  	 float: left; 
+    /*position: fixed;*/
     top: 51px;
-    bottom: 0;
+    /*bottom: 0;
     left: 0;
     z-index: 1000;
     display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
+    */
+    padding: 10px 20px 20px 20px;
+    /*overflow-x: hidden;
+    overflow-y: auto;*/
+    background-color: #e3e3e3;
+    border-right: 1px solid #cacaca;
 }
 
-.main
+#main
 {
-   padding right: 40px;
-   padding left: 40px;
-   padding: 20px;
+    padding-top: 40px;
+    width: 990px;
+    /*position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 281px;*/
+    float: left;
+    /*z-index: 1000;*/
+    /*display: block;*/
+ 
+}
+
+#col-left
+{
+   float: left;
+   width: 33%;
+   text-align:center;
+}
+
+#col-middle
+{
+   float: left;
+   width: 33%;
+   text-align:center;
+}
+
+#col-right
+{
+   float: left;
+   width: 33%;
+   text-align:center;
 }
 
 #img-sftp-src

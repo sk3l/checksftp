@@ -28,34 +28,27 @@
                                                                                            <![endif]-->
 </head>
 <body>
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+	<div id="window">
+   <nav id="navbar-top">
+      <div id="div-nav">
          <div class="navbar-header">
-            <!--            <button type="button" class="navbar-toggle collapsed"
-            data-toggle="collapse" data-target=
-            "#navbar">
-               <span class="sr-only">Toggle  navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
- 
-            </button>
---><a id="navbar-link" href="/" class="navbar-brand">checksftp</a>
+				<a id="navbar-link" href="/" class="navbar-brand">checksftp</a>
          </div>
          <div id="navbar" class="navbar-collapse collapse">
-            <span class="navbar-text navbar-right">Bloomberg SFTP
+            <span id="span-nav" class="navbar-text navbar-right">Bloomberg SFTP
             test utility</span>
          </div>
       </div>
    </nav><!--<div id="banner"></div>-->
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-md-2 sidebar">
+   <div id="container">
+      <!--<div class="row">-->
+         <div id="sidebar">
             <h3>Parameters</h3>
             <form id="form-params">
                <hr>
                <div class="form-group form-group-endpoint">
-                  <label>Select an endpoint</label> <label for=
+                  <div><label>Select an endpoint</label></div> 
+						<label for=
                   "hostSelection" class=
                   "form-label-endpoint">Host</label>
                   <div class="dropdown">
@@ -109,11 +102,11 @@
 					<button type="button" onclick="run_the_check()" class="btn btn-default">Run Check</button>
             </form>
          </div>
-         <div class="col-md-10 col-md-offset-2 main">
-            <div class="row">
-            <div class="col-md-4" id="img-sftp-src"><img alt="Source" 
+         <div id="main">
+            <!--<div class="row">-->
+            <div id="col-left" id="img-sftp-src"><img alt="Source" 
 					src="${request.static_url('checksftp:static/images/web-home.png')}"/></div>
-            <div class="col-md-4">
+            <div id="col-middle">
 					<div id="div-result-title"><h1 id="h1-title">Ready to Check</h1></div>
 					<div id="div-result-outcome" style="display:none;"><h2 id="h2-outcome"></h2></div>
 					<div id="div-result-img" style="display:none;"></div>
@@ -122,7 +115,7 @@
 						<div id="div-result-summary"></div>
 					</div>
 				</div>
-            <div class="col-md-4" id="img-sftp-dst"><img alt="Destination" 
+            <div id="col-right" id="img-sftp-dst"><img alt="Destination" 
 					src="${request.static_url('checksftp:static/images/web-server.png')}"/></div>
             </div>
            
@@ -133,9 +126,9 @@
   				<div class="panel-body">
   				detailed results
 				</div>
-           	</div>  
-        </div>
-      </div>
+           </div>  
+        <!--</div>-->
+      <!--</div>-->
    </div>
    <!-- Placed at the end of the document so the pages load faster -->
    <script src=
@@ -147,5 +140,6 @@
     
    <!--<script src="/bootstrap/js/ie10-viewport-bug-workaround.js">-->
     <!--</script>-->
+	 </div>
 </body>
 </html>
