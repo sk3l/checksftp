@@ -60,20 +60,21 @@
                      
 							<ul class="dropdown-menu" id="menu-host" aria-labelledby=
                      "dropdwn-host">
-                        <li><a href="#">foo</a></li>
-                        <li><a href="#">bar</a></li>
-                        <li><a href="#">bax</a></li>
+                        <li><a href="#">foobar</a></li>
                         <li><a href="#">localhost</a></li>
                      </ul>
 							</li>
 						</ul>
                   </div>
 						
-						<label for="inputPort" class=
-                  "form-label-endpoint">Port</label> <input class=
+              </div>
+				  <div class="form-group form-group-endpoint">
+					<label for="input-port" class=
+                  "form-label-endpoint">Port</label> 
+						<input type="text" class=
                   "form-control" id="input-port" placeholder=
                   "Enter port">
-               </div>
+ 					</div>
                <hr>
                <div class="form-group form-group-endpoint">
                   <label for="hostSelection">Select the 
@@ -103,30 +104,42 @@
             </form>
          </div>
          <div id="main">
-            <!--<div class="row">-->
-            <div id="col-left" id="img-sftp-src"><img alt="Source" 
+            <div id="div-pics">
+            <div id="col-left" id="img-sftp-src">
+					<div class="div-label-img"> <span class="label label-default label-img">Source</span>
+					<div class="div-url"><span id="span-target-src">web server</span></div>
+				</div>
+					<img alt="Source" 
 					src="${request.static_url('checksftp:static/images/web-home.png')}"/></div>
             <div id="col-middle">
 					<div id="div-result-title"><h1 id="h1-title">Ready to Check</h1></div>
-					<div id="div-result-outcome" style="display:none;"><h2 id="h2-outcome"></h2></div>
 					<div id="div-result-img" style="display:none;"></div>
+					<div id="div-result-outcome" style="display:none;"><h2 id="h2-outcome"></h2></div>
 					<div id="div-result-status" style="display: none;"><div class="loader"></div></div>
 					<div id="div-result-text" style="display: none;">
 						<div id="div-result-summary"></div>
 					</div>
 				</div>
-            <div id="col-right" id="img-sftp-dst"><img alt="Destination" 
-					src="${request.static_url('checksftp:static/images/web-server.png')}"/></div>
-            </div>
-           
-			  <div class="panel panel-default" id="panel-trace" style="display: none;">
-  				<div class="panel-heading">
-    				<h3 class="panel-title">Trace Info</h3>
-  				</div>
-  				<div class="panel-body">
-  				detailed results
+            <div id="col-right" id="img-sftp-dst">
+					<div class="div-label-img" ><span class="label label-default label-img">Target</span>
+					<div class="div-url">
+					<span id="span-target-host">host</span>
+					<span id="span-target-port">:port</span>
+					</div>
+					</div>
+					<img alt="Destination" 
+					src="${request.static_url('checksftp:static/images/web-server.png')}"/>
 				</div>
-           </div>  
+				</div>
+			  	<div class="panel panel-default" id="panel-trace" style="display: none;">
+  					<div class="panel-heading">
+    					<h3 class="panel-title">Trace Info</h3>
+  					</div>
+  					<div id="panel-trace-dtl" class="panel-body">
+  						detailed results
+					</div>
+           	</div>  
+			</div>
         <!--</div>-->
       <!--</div>-->
    </div>

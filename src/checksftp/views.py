@@ -50,11 +50,18 @@ class sftp_conn_tester:
         try:
 
             self.rbuff_ = []
+            trace = ""
 
             # Connect to remote host and attempt to read SSH server banner
             with self._create_sock() as sock:
 
+                trace = "<div class='div-trace-line'> >> Attempting sonnection to host '{0}' on port {1}</div>".format(
+                            self.host_,
+                            self.port_)
+
                 sock.connect((self.host_, self.port_))
+
+                trace += "<div class='div-trace-line'> >> Connection succeeded; checking SFTP version</div>"
 
                 # Read server connection banner
                 buff = []
@@ -64,15 +71,21 @@ class sftp_conn_tester:
                     if len(buff) < 1024:
                         break;
 
+                trace += "<div class='div-trace-line'> >> Server version string received</div>"
+            
             # Validate SSH server banner
             # Pattern for banner is
             # SSH-<majvers>.<minvers>-<PrintableAsciiButSpaceOrDash> <PrintableAscii>\n
+            verstr = bytes(self.rbuff_).decode()
             pattern = re.compile('SSH-\d.\d-[!\-!-~]+ [ -~]*\n')
-            match = pattern.match(bytes(self.rbuff_).decode())
+            match = pattern.match(verstr)
+
+            trace += "<div class='div-trace-line'> >> Server version string = '{0}'</div>".format(verstr)
 
             message = {
                 'result' : 0,
                 'msg'    : 'Successful SFTP connection',
+                'trace'  : trace
             }
 
             if match is None:
@@ -82,17 +95,23 @@ class sftp_conn_tester:
             return message
 
         except ConnectionRefusedError as err:
+            
+            trace += "<div class='div-trace-line'> >> Connection error ='{0}'</div>".format(err)
             return {
                 'result' : 4,
                 'msg'    : "No active service found at host '{0}', port {1}.".format(
                     self.host_,
-                    self.port_)
+                    self.port_),
+                'trace'  : trace
             }
 
         except OSError as err:
+            trace += "<div class='div-trace-line'> >> Service error ='{0}'</div>".format(err)
+
             return {
                 'result' : 8,
-                'msg'    : "Encountered internal error connecting to SFTP service."
+                'msg'    : "Encountered internal error connecting to SFTP service.",
+                'trace'  : trace
             }
 
     def test_loop_connect(self):

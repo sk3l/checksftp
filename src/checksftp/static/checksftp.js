@@ -3,7 +3,12 @@ $(function(){
        $(".dropdown-menu").on('click', 'li a', function(){
                 $(".dropdown-toggle").text($(this).text());
                 $(".dropdown-toggle").val($(this).text());
-                $('.dropdown-toggle').append('<span class="caret"></span>');
+                $(".dropdown-toggle").append('<span class="caret"></span>');
+                $("#span-target-host").text($(this).text());
+             });
+
+       $("#input-port").on('blur', function(e){
+               $("#span-target-port").text(":" + $("#input-port").val());  
              });
 
 });
@@ -30,6 +35,7 @@ function run_the_check(){
       $("#div-result-outcome").hide();
       $("#div-result-text").hide()
       $("#panel-trace").hide();
+      $("#panel-trace-dtl").html('');
 
       jQuery.ajax({
                   url     : checkurl,
@@ -47,17 +53,22 @@ function run_the_check(){
                                        '<img alt="succcess!" src="static/images/web-check.png"></img>');
                                     $("#h2-outcome").text("Success");
                                     $("#h2-outcome").css("color", "green");
+                                    $("#span-target-host").css("color", "green");
+                                    $("#span-target-port").css("color", "green");
                                  }
                                  else {
                                     $("#div-result-img").html(
                                        '<img alt="fail" src="static/images/web-x.png"></img>');
                                     $("#h2-outcome").text("Failure");
                                     $("#h2-outcome").css("color", "red");
+                                    $("#span-target-host").css("color", "red");
+                                    $("#span-target-port").css("color", "red");
                                  }
 
                                  $("#div-result-text").show()
 
                                  if (showtrace === true) {
+                                    $("#panel-trace-dtl").html(data.trace);
                                     $("#panel-trace").show();
                                  }
                                  else {

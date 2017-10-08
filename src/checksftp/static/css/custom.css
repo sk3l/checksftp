@@ -16,7 +16,7 @@ body
    width: 1280px;
    min-height: 740px;
    margin: auto;
-   margin-top: 2px;
+   margin-top: 10px;
 }
 
 #navbar-top
@@ -122,8 +122,8 @@ body
 
 #main
 {
-    padding-top: 40px;
-    width: 990px;
+    /*padding-top: 40px;*/
+    width: 997px;
     /*position: fixed;
     top: 51px;
     bottom: 0;
@@ -132,6 +132,14 @@ body
     /*z-index: 1000;*/
     /*display: block;*/
  
+}
+
+#div-pics
+{
+   padding-top: 10px;
+   font-style: italic;
+	float: left;
+	width: 100%;
 }
 
 #col-left
@@ -153,6 +161,42 @@ body
    float: left;
    width: 33%;
    text-align:center;
+}
+
+.div-url
+{
+   padding-top: 8px;
+   padding-bottom: 8px;
+}
+
+#span-target-src
+{
+}
+
+
+#span-target-host
+{
+   font-style: unset;
+   font-weight: bold;
+   color : #4169E1;
+}
+
+#span-target-port
+{
+   font-style: unset;
+   font-weight: bold;
+   color : #4969E1;
+}
+
+.div-label-img
+{
+   padding-top: 8px;
+   padding-bottom: 8px;
+}
+
+.label-img
+{
+   font-size: 1em;
 }
 
 #img-sftp-src
@@ -178,8 +222,6 @@ body
 
 #div-result-img
 {
-   padding-top: 40px;
-   padding-bottom: 40px;
    text-align: center;
 }
 
@@ -242,4 +284,13 @@ body
 #panel-trace
 {
 	margin-top: 40px;
+   margin-left: 20px;
+   margin-right: 20px;
+   float: left;
+   width: 957px;
+}
+
+.div-trace-line
+{
+   padding: 8px;
 }
