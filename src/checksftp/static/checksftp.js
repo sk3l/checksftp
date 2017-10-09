@@ -50,7 +50,7 @@ function run_the_check(){
                                  let result = data.result;
                                  if (result === 0) {
                                     $("#div-result-img").html(
-                                       '<img alt="succcess!" src="static/images/web-check.png"></img>');
+                                       '<img alt="succcess!" src="static/images/web-check-sml.png"></img>');
                                     $("#h2-outcome").text("Success");
                                     $("#h2-outcome").css("color", "green");
                                     $("#span-target-host").css("color", "green");
@@ -58,7 +58,7 @@ function run_the_check(){
                                  }
                                  else {
                                     $("#div-result-img").html(
-                                       '<img alt="fail" src="static/images/web-x.png"></img>');
+                                       '<img alt="fail" src="static/images/web-x-sml.png"></img>');
                                     $("#h2-outcome").text("Failure");
                                     $("#h2-outcome").css("color", "red");
                                     $("#span-target-host").css("color", "red");

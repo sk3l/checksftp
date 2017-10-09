@@ -73,7 +73,7 @@
                   "form-label-endpoint">Port</label> 
 						<input type="text" class=
                   "form-control" id="input-port" placeholder=
-                  "Enter port">
+                  "Enter port" required>
  					</div>
                <hr>
                <div class="form-group form-group-endpoint">
