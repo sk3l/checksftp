@@ -120,7 +120,7 @@
                <div id="col-left" class="col-xs-4">
                <div class="div-label-img">
                   <span class=
-                  "label label-primary label-img">Source</span>
+                  "label label-default label-img">Source</span>
                   <div class="div-url">
                      <span id="span-target-src">web server</span>
                   </div>
@@ -147,7 +147,7 @@
                <div id="col-right" class="col-xs-4">
                <div class="div-label-img">
                   <span class=
-                  "label label-primary label-img" id="span-target-lbl">Target</span>
+                  "label label-default label-img" id="span-target-lbl">Target</span>
                   <div class="div-url">
                      <span id="span-target-host">host</span>
                      <span id="span-target-port">:port</span>
