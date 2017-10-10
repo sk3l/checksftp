@@ -8,12 +8,30 @@ $(function(){
              });
 
        $("#input-port").on('blur', function(e){
-               $("#span-target-port").text(":" + $("#input-port").val());  
+               $("#span-target-port").text(":" + $("#input-port").val());
              });
 
 });
 
 function run_the_check(){
+
+      $("#div-host-err").hide();
+      $("#div-port-err").hide();
+
+      let isValid = true;
+      if ($(".dropdown-toggle").text() === "Select Host") {
+         $("#div-host-err").show();
+         isValid = false;
+      }
+
+      if ($.isNumeric($("#input-port").val()) === false) {
+         $("#div-port-err").show();
+         isValid = false;
+      }
+
+      if (isValid === false)
+         return;
+
       $("#h1-title").text("Running check...");
       $("#div-result-status").show();
 

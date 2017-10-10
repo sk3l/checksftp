@@ -53,7 +53,7 @@
          <!--<div class="row">-->
          <div id="sidebar">
             <h3>Parameters</h3>
-            <form id="form-params" name="form-params">
+            <form id="form-params" name="form-params" novalidate>
                <hr>
                <div class="form-group form-group-endpoint">
                   <div>
@@ -79,12 +79,18 @@
                         </li>
                      </ul>
                   </div>
+						<div class="form-error" id="div-host-err">
+							Please enter a valid host.
+						</div>
                </div>
                <div class="form-group form-group-endpoint">
                   <label for="input-port" class=
                   "form-label-endpoint">Port</label> <input type=
                   "text" class="form-control" id="input-port"
-                  placeholder="Enter port" required="">
+                  placeholder="Enter port" required>
+						<div class="form-error" id="div-port-err">
+							Please enter a valid port.
+						</div>
                </div>
                <hr>
                <div class="form-group form-group-endpoint">
@@ -110,9 +116,10 @@
                <div class="checkbox">
                   <label><input type="checkbox" id=
                   "chkbx-trace">Show trace info</label>
-               </div><button type="button" onclick=
-               "run_the_check()" class="btn btn-default">Run
-               Check</button>
+               </div>
+					<button type="button" onclick=
+               	"run_the_check()" class="btn btn-default">Run Check
+               </button>
             </form>
          </div>
          <div id="main">

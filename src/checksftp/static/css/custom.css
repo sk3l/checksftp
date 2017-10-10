@@ -114,6 +114,13 @@ body
     border-bottom-left-radius: 4px;
 }
 
+.form-error
+{
+   padding-top: 8px;
+   color: red;
+   display: none;
+}
+
 #main
 {
     position: absolute;
