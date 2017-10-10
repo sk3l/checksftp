@@ -98,18 +98,29 @@
                   <div class="radio">
                      <label><input type="radio" name=
                      "optionsRadios" id="optionsRadios1" value=
-                     "option1" checked>Simple</label>
+                     "simple" checked>Simple</label>
                   </div>
                   <div class="radio">
                      <label><input type="radio" name=
                      "optionsRadios" id="optionsRadios2" value=
-                     "option2">Continuous</label>
+                     "continuous">Continuous</label>
                   </div>
                   <div class="radio">
                      <label><input type="radio" name=
                      "optionsRadios" id="optionsRadios3" value=
-                     "option3"> Full</label>
+                     "full"> Full</label>
                   </div>
+               <div class="form-group form-group-endpoint" id="div-cont-int">
+                  <label for="input-cont-int" class=
+                  "form-label-endpoint">Check Interval
+						</label> 
+						<input type=
+                  "text" class="form-control" id="input-cont-int"
+                  placeholder="Enter interval" required>
+						<div class="form-error" id="div-port-err">
+							Please enter a valid port.
+						</div>
+					</div>
                </div>
                <hr>
                <div class="checkbox">
@@ -126,7 +137,7 @@
                <div id="col-left" class="col-xs-4">
                <div class="div-label-img">
                   <span class=
-                  "label label-default label-img">Source Host</span>
+                  "label label-default label-img">Test Host</span>
                   <div class="div-url">
                      <span id="span-target-src">web server</span>
                   </div>

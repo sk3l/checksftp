@@ -121,6 +121,11 @@ body
    display: none;
 }
 
+#div-cont-int
+{
+   display: none;
+}
+
 #main
 {
     position: absolute;
