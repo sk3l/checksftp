@@ -1,3 +1,4 @@
+import json
 import re
 import socket
 
@@ -5,7 +6,12 @@ from pyramid.view import view_config
 
 @view_config(route_name='home', renderer='templates/index.mak')
 def on_page_load(request):
-    return {'project': 'checksftp'}
+
+    #import pdb;pdb.set_trace()
+    host_list = json.loads(request.registry.settings['checksftp.host_list'])
+
+    return {'project'  : 'checksftp',
+            'host_list' : host_list['hosts']}
 
 @view_config(route_name='runthecheck', renderer='json')
 def on_run_check(request):
@@ -72,12 +78,12 @@ class sftp_conn_tester:
                         break;
 
                 trace += "<div class='div-trace-line'> >> Server version string received</div>"
-            
+
             # Validate SSH server banner
             # Pattern for banner is
             # SSH-<majvers>.<minvers>-<PrintableAsciiButSpaceOrDash> <PrintableAscii>\n
             verstr = bytes(self.rbuff_).decode()
-            pattern = re.compile('SSH-\d.\d-[!\-!-~]+ [ -~]*\n')
+            pattern = re.compile('SSH-\d.\d-[!\-!-~]+ [ -~]*\r?\n')
             match = pattern.match(verstr)
 
             trace += "<div class='div-trace-line'> >> Server version string = '{0}'</div>".format(verstr)
@@ -95,7 +101,7 @@ class sftp_conn_tester:
             return message
 
         except ConnectionRefusedError as err:
-            
+
             trace += "<div class='div-trace-line'> >> Connection error ='{0}'</div>".format(err)
             return {
                 'result' : 4,
