@@ -153,6 +153,48 @@ class sftp_conn_tester:
 
                 sftpClient = sshClient.open_sftp()
 
+                # Test simplest SFTP functionality
+
+                trace += "<div class='div-trace-line'> >> Testing directory creation</div>"
+                try:
+                    sftpClient.mkdir(".checksftp_test_dir")
+                    trace += "<div class='div-trace-line'> >> Directory creation successful</div>"
+                except Exception as err:
+                    trace += "<div class='div-trace-line'> >> Directory creation failed! {0}</div>".format(
+                            err)
+
+                trace += "<div class='div-trace-line'> >> Testing file write</div>"
+                try:
+                    sftpClient.put(".checksftp_test_file", ".checksftp_test_dir/.checksftp_test_file_up")
+                    trace += "<div class='div-trace-line'> >> File write successful</div>"
+                except Exception as err:
+                    trace += "<div class='div-trace-line'> >> File write failed! {0}</div>".format(
+                            err)
+
+                trace += "<div class='div-trace-line'> >> Testing file read</div>"
+                try:
+                    sftpClient.get(".checksftp_test_dir/.checksftp_test_file_up", ".checksftp_test_file_down")
+                    trace += "<div class='div-trace-line'> >> File read successful</div>"
+                except Exception as err:
+                    trace += "<div class='div-trace-line'> >> File read failed! {0}</div>".format(
+                            err)
+
+                trace += "<div class='div-trace-line'> >> Testing file removal</div>"
+                try:
+                    sftpClient.remove(".checksftp_test_dir/.checksftp_test_file_up")
+                    trace += "<div class='div-trace-line'> >> File removal successful</div>"
+                except Exception as err:
+                    trace += "<div class='div-trace-line'> >> File removal failed! {0}</div>".format(
+                            err)
+
+                trace += "<div class='div-trace-line'> >> Testing directory removal</div>"
+                try:
+                    sftpClient.rmdir(".checksftp_test_dir")
+                    trace += "<div class='div-trace-line'> >> Directory removal successful</div>"
+                except Exception as err:
+                    trace += "<div class='div-trace-line'> >> Directory removal failed! {0}</div>".format(
+                            err)
+
 
             trace += "<div class='div-trace-line'> >> SFTP session completed successfully</div>"
 
