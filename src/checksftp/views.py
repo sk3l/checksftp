@@ -2,6 +2,8 @@ import json
 import re
 import socket
 
+from paramiko.client        import SSHClient
+from paramiko.sftp_client   import SFTPClient
 from pyramid.view import view_config
 
 @view_config(route_name='home', renderer='templates/index.mak')
@@ -20,8 +22,10 @@ def on_run_check(request):
 
         #import pdb;pdb.set_trace()
 
-        host = request.GET['host']
-        port = int(request.GET['port'])
+        host        = request.GET['host']
+        port        = int(request.GET['port'])
+        checktype   = request.GET['checktype']
+
 
         trace = False
         if 'trace' in request.GET and request.GET['trace']:
@@ -29,7 +33,13 @@ def on_run_check(request):
 
         sct = sftp_conn_tester(host, port, trace)
 
-        return sct.test_basic_connect()
+        if checktype == "simple" or checktype == "continuous":
+            return sct.test_basic_connect()
+        elif checktype == "full":
+            test_acct = json.loads(request.registry.settings['checksftp.test_acct'])
+            return sct.test_full_connect(test_acct['user'], test_acct['password'])
+        else:
+            raise Exception("Unrecognized check type '{0}'".format(checktype))
 
     except Exception as err:
         return {
@@ -120,8 +130,46 @@ class sftp_conn_tester:
                 'trace'  : trace
             }
 
-    def test_loop_connect(self):
-        pass
+    def test_full_connect(self, uname, passwd):
 
-    def test_full_connect(sefl):
-        pass
+        trace = ""
+
+        #import pdb;pdb.set_trace()
+        try:
+            with SSHClient() as sshClient:
+
+                trace = "<div class='div-trace-line'> >> Attempting sonnection to host '{0}' on port {1}</div>".format(
+                            self.host_,
+                            self.port_)
+
+                sshClient.load_host_keys("/home/{0}/.ssh/known_hosts".format(uname))
+
+                sshClient.connect(self.host_,
+                        port=self.port_,
+                        username=uname,
+                        password=passwd)
+
+                trace += "<div class='div-trace-line'> >> Connection succeeded; requesting SFTP service</div>"
+
+                sftpClient = sshClient.open_sftp()
+
+
+            trace += "<div class='div-trace-line'> >> SFTP session completed successfully</div>"
+
+            return {
+                'result' : 0,
+                'msg'    : 'Successful SFTP connection',
+                'trace'  : trace
+            }
+
+
+        except SSHException as err:
+            trace += "<div class='div-trace-line'> >> Service error ='{0}'</div>".format(err)
+
+            return {
+                'result' : 8,
+                'msg'    : "Encountered internal error connecting to SFTP service.",
+                'trace'  : trace
+            }
+
+

@@ -67,7 +67,7 @@ function check_with_server(){
     let host = $(".dropdown-toggle").text()
     let port = $("#input-port").val()
 
-    let checkurl = 'runthecheck?host=' + host + '&port=' + port;
+    let checkurl = 'runthecheck?checktype=' + checktype + '&host=' + host + '&port=' + port;
 
     if ($("#chkbx-trace").is(':checked')) {
        showtrace = true;
