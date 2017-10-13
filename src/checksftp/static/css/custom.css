@@ -305,6 +305,13 @@ body
 	margin-top: 20px;
    margin-left: 20px;
    margin-right: 20px;
+   height: 280px;
+}
+
+#panel-trace-dtl
+{
+   max-height: 220px;
+   overflow-y: auto;
 }
 
 .div-trace-line
