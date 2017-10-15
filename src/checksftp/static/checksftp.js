@@ -86,7 +86,7 @@ function check_with_server(){
        type    : 'POST',
        dataType: 'json',
        success : function(data){
-          alert("Success. Got the message:\n "+checkurl +"\n" + data.message)
+          //alert("Success. Got the message:\n "+checkurl +"\n" + data.message)
 
           $("#div-result-summary").text(data.msg);
 
